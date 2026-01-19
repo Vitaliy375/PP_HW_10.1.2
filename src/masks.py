@@ -1,4 +1,4 @@
-def get_mask_card_number(number: int) -> str:
+def get_mask_card_number(number: str) -> str:
     """
     Преобразование числа в маску.
 
@@ -7,7 +7,7 @@ def get_mask_card_number(number: int) -> str:
     """
     res_fin = []
     conv_str = str(number)
-    count_stars = len(conv_str[7:-5]) * "*"
+    count_stars = len(conv_str[6:-4]) * "*"
     join_number = f"{conv_str[:6]}{count_stars}{conv_str[-4:]}"
     for i in range(0, len(join_number), 4):
         res_fin.append(join_number[i: i + 4])
@@ -26,5 +26,5 @@ def get_mask_account(number: int) -> str:
 
 
 if __name__ == "__main__":
-    print(get_mask_card_number(879667987605679876))
+    print(get_mask_card_number(8796679876056798))
     print(get_mask_account(9786378598677354))
