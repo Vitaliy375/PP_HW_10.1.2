@@ -1,9 +1,7 @@
-from src.masks import get_mask_card_number
-from src.masks import get_mask_account
-from datetime import datetime
+from src.masks import get_mask_account, get_mask_card_number
 
 
-def parse_and_mask(card_string: str) -> str:
+def mask_account_card(card_string: str) -> str:
     """Функция из строки с типом и номером, маскирует номер карты или счета."""
     # Разбиваем исходную строку на две части, начиная с конца:
     # первая часть — название/тип ("Visa Platinum" или "Счет"),
@@ -13,7 +11,8 @@ def parse_and_mask(card_string: str) -> str:
     # Если после разбиения получилось не две части (например, нет пробела),
     # считаем строку некорректной и просто возвращаем её без изменений.
     if len(parts) != 2:
-        return card_string # Некорректный формат
+        # Некорректный формат
+        return card_string
 
     # Распаковываем две части в переменные:
     # name — тип/название,
@@ -54,7 +53,3 @@ def get_date(date_str: str) -> str:
     year, month, day = date_part.split('-')
     # Собираем строку в формате 'ДД.ММ.ГГГГ'
     return f"{day}.{month}.{year}"
-
-
-
- 
