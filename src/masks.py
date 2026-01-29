@@ -2,7 +2,7 @@ def get_mask_card_number(number: str) -> str:
     """
     Преобразование числа в маску.
 
-    :param number: int принимает целочисленный вид данных
+    :param number: str принимает целочисленный вид данных
     :return: str возвращает строку в формате XXXX XX** **** XXXX
     """
     res_fin = []
@@ -14,11 +14,11 @@ def get_mask_card_number(number: str) -> str:
     return " ".join(res_fin)
 
 
-def get_mask_account(number: int) -> str:
+def get_mask_account(number: str) -> str:
     """
     Преобразование числа в маску счета.
 
-    :param number: int принимает целочисленный вид данных
+    :param number: str Принимает целочисленный вид данных
     :return: str возвращает строку в формате **XXXX
     """
     conv_str = str(number)
@@ -26,5 +26,5 @@ def get_mask_account(number: int) -> str:
 
 
 if __name__ == "__main__":
-    print(get_mask_card_number(8796679876056798))
-    print(get_mask_account(9786378598677354))
+    print(get_mask_card_number(str(8566669876056798)))
+    print(get_mask_account(str(9786378598677354)))
