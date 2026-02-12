@@ -25,6 +25,4 @@ def get_mask_account(number: str) -> str:
     return f"**{conv_str[-4:]}"
 
 
-if __name__ == "__main__":
-    print(get_mask_card_number(str(8566669876056798)))
-    print(get_mask_account(str(9786378598677354)))
+
