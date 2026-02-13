@@ -14,5 +14,3 @@ def sort_by_date(list_dict: list[dict], reduce: bool = True) -> list[dict]:
     (по умолчанию — убывание) и возвращает новый список, отсортированный по дате"""
     sorted_list = sorted(list_dict, key=lambda x: x["date"], reverse=reduce)
     return sorted_list
-
-
