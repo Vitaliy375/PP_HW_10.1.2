@@ -25,7 +25,7 @@ def mask_account_card(card_string: str) -> str:
 
         # Для счета показываем только последние 4 цифры,
         # перед ними добавляем две звездочки.
-        return name + " " + get_mask_account(number)  # Маскировка счета
+        return name + " " + get_mask_account(int(number))  # Маскировка счета
     else:
         # Иначе считаем, что это карта.
         # Маскируем карту так, чтобы были видны первые 6 и последние 4 цифры.
@@ -39,7 +39,7 @@ def mask_account_card(card_string: str) -> str:
         if len(clean_num) == 16:
 
             # Склеиваем название карты и замаскированный номер через пробел.
-            return name + " " + get_mask_card_number(clean_num)
+            return name + " " + get_mask_card_number(int(clean_num))
 
         # Если номер карты не 16-значный, возвращаем исходную строку как есть.
         return card_string
