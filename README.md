@@ -108,10 +108,9 @@ card_number_generator(start, end)
 python
 for card in card_number_generator(1, 5):
     print(card)
-# 0000 0000 0000 0001
-# 0000 0000 0000 0002
-# ...
-text
+        0000 0000 0000 0001
+        0000 0000 0000 0002
+        ... text
 
 ## Покрытие тестами
 
