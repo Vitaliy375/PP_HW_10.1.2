@@ -21,7 +21,7 @@ def test_empty_list() -> None:
     assert list(empty_gen) == []
 
 
-def test_missing_operationAmount(data: list[int]) -> None:
+def test_missing_operation_amount() -> None:
     transaction = [{"id": 1, "description": "test"}]
     gen = filter_by_currency(transaction, "USD")
     assert list(gen) == []
@@ -82,6 +82,6 @@ def test_large_range() -> None:
     assert numbers[0] == "9999 9999 9999 9998"
 
 
-def test_start_greater_than_end(data: list[int]) -> None:
+def test_start_greater_than_end() -> None:
     numbers = list(card_number_generator(10, 5))
     assert numbers == []
