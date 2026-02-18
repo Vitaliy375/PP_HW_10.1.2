@@ -17,7 +17,7 @@ from src.widget import get_date, mask_account_card
         ("Visa Platinum", "Visa Platinum"),
     ],
 )
-def test_mask_account_card(input_str:str, expected:str) -> None:
+def test_mask_account_card(input_str: str, expected: str) -> None:
     """Тестирует ВСЕ ветки: счета, карты!=16, неверный формат."""
     result = mask_account_card(input_str)
     assert result == expected
@@ -37,6 +37,6 @@ def test_card_exactly_16_digits() -> None:
         ("2026-02-12T20:53:00", "12.02.2026"),
     ],
 )
-def test_get_date(date_str:str, expected:str) -> None:
+def test_get_date(date_str: str, expected: str) -> None:
     result = get_date(date_str)
     assert result == expected

@@ -10,8 +10,7 @@ def filter_by_currency(transactions, currency_code):
         dict: транзакция с указанной валютой
     """
     for transaction in transactions:
-        if (transaction.get('operationAmount', {}).get('currency', {})
-                .get('code') == currency_code):
+        if transaction.get("operationAmount", {}).get("currency", {}).get("code") == currency_code:
             yield transaction
 
 
@@ -26,7 +25,7 @@ def transaction_descriptions(transactions):
         str: описание операции
     """
     for transaction in transactions:
-        yield transaction['description']
+        yield transaction["description"]
 
 
 def card_number_generator(start, end):
@@ -45,5 +44,3 @@ def card_number_generator(start, end):
         full_number = f"{number:016d}"
         formatted = f"{full_number[:4]} {full_number[4:8]} {full_number[8:12]} {full_number[12:]}"
         yield formatted
-
-
