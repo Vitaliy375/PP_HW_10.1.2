@@ -98,15 +98,13 @@ for trans in usd_transactions:
 transaction_descriptions(transactions)
 Возвращает генератор описаний транзакций.
 
-python
-descriptions = transaction_descriptions(transactions)
+python descriptions = transaction_descriptions(transactions)
 for desc in descriptions:
     print(desc)
 card_number_generator(start, end)
 Генерирует номера карт в формате XXXX XXXX XXXX XXXX.
 
-python
-for card in card_number_generator(1, 5):
+python for card in card_number_generator(1, 5):
     print(card)
         0000 0000 0000 0001
         0000 0000 0000 0002
