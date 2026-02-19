@@ -28,8 +28,7 @@ poetry shell
 
 ## Примеры
 
-python
-from utils import filter_by_state, sort_by_date # Замените utils на ваш файл
+python from utils import filter_by_state, sort_by_date
 
 ### Тестовые данные (как ваши товары + state/date)
 
@@ -51,10 +50,7 @@ sorted_tx = sort_by_date(executed)
 print([tx["desc"] for tx in sorted_tx])  # ['Снятие', 'Перевод']
 Запуск: python -m src.main (не python src/main.py).
 
-Комбинированное использование
-Фильтр + сортировка в цепочке:
-
-python
+Комбинированное использование Фильтр + сортировка в цепочке:
 
 ### Только EXECUTED, отсортированные по дате (возрастание)
 
@@ -62,12 +58,11 @@ recent_first = sort_by_date(filter_by_state(transactions, "EXECUTED"), reverse=F
 print(recent_first[0]["date"])  # Самая новая дата
 Интеграция с вашими прошлыми функциями (товары + транзакции).
 
-#Тестирование
+## Тестирование
 Проект покрыт юнит-тестами с использованием pytest (покрытие ~98%). Тесты проверяют основные функции обработки данных,
 валидацию входных параметров и обработку ошибок.
 
-Запуск тестов
-bash
+Запуск тестов bash
 
 ### Установка зависимостей для тестов
 
@@ -89,3 +84,38 @@ pytest tests/test_data_processor.py -v
 
 pytest tests/integration/ -m integration
 
+
+## Модуль generators
+Содержит генераторы для эффективной обработки данных:
+
+### filter_by_currency(transactions, currency_code)
+Фильтрует транзакции по коду валюты, возвращает итератор.
+
+python
+usd_transactions = filter_by_currency(transactions, "USD")
+for trans in usd_transactions:
+    print(trans['description'])
+transaction_descriptions(transactions)
+Возвращает генератор описаний транзакций.
+
+python descriptions = transaction_descriptions(transactions)
+for desc in descriptions:
+    print(desc)
+card_number_generator(start, end)
+Генерирует номера карт в формате XXXX XXXX XXXX XXXX.
+
+python for card in card_number_generator(1, 5):
+    print(card)
+        0000 0000 0000 0001
+        0000 0000 0000 0002
+        ... text
+
+## Покрытие тестами
+
+Тесты обеспечивают > 90 % покрытия:
+- Все ветки логики генераторов протестированы
+- Обработаны edge - кейсы(пустые списки, отсутствующие ключи)
+- Параметризация для множественных проверок
+- Фикстура `sample_transactions` для переиспользования данных
+
+Запуск: `pytest test_generators.py - -cov = generators - -cov - report = term - missing`
