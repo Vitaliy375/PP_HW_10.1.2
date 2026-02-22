@@ -1,0 +1,4 @@
+add called
+add ok
+divide called
+divide error: ZeroDivisionError. Inputs: (1, 0), {}

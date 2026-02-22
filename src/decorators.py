@@ -1,13 +1,15 @@
 from functools import wraps
 import sys
 
-def log(filename):
+
+def log(filename: str | None = None):
     """Декоратор для логирования начала/окончания функции и ошибок."""
+
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
             if filename:
-                with open(filename, 'a', encoding='utf-8') as f:
+                with open(filename, "a", encoding="utf-8") as f:
                     f.write(f"{func.__name__} called\n")
                     try:
                         result = func(*args, **kwargs)
@@ -15,7 +17,9 @@ def log(filename):
                         f.flush()
                         return result
                     except Exception as e:
-                        f.write(f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}\n")
+                        f.write(
+                            f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}\n"
+                        )
                         f.flush()
                         raise
             else:
@@ -26,7 +30,12 @@ def log(filename):
                     print(f"{func.__name__} ok", file=sys.stderr)
                     return result
                 except Exception as e:
-                    print(f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}", file=sys.stderr)
+                    print(
+                        f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}",
+                        file=sys.stderr,
+                    )
                     raise
+
         return wrapper
+
     return decorator
